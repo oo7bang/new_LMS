@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -74,13 +74,29 @@ WSGI_APPLICATION = 'new_LMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# Local DB
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'new_lms',
+        'USER': 'root',
+        'PASSWORD': 'aivle',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
+# Server DB
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'new_lms',
+#         'USER': 'root',
+#         'PASSWORD': 'aivle',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -122,3 +138,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MODEL_ROOT = os.path.join(BASE_DIR, 'models')
